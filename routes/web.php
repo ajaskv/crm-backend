@@ -40,12 +40,12 @@ Route::get('/reccurring-invoice', function () {
 });
 
 Route::get('mailchimp', 'NewsletterController@mail')->name('mailchip');
-Route::get('mailsend', 'NewsletterController@index')->name('mailchip');
+Route::get('mailsend', 'NewsletterController@index')->name('mailchip.send');
 
 require __DIR__ . '/auth.php';
 
-Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index'])->middleware(['XSS']);
-Route::get('/home', ['as' => 'home', 'uses' => 'HomeController@index'])->middleware(['auth', 'XSS']);
+// Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index'])->middleware(['XSS']);
+// Route::get('/home', ['as' => 'home', 'uses' => 'HomeController@index'])->middleware(['auth', 'XSS']);
 
 Route::get('/register', function () {
     $settings = Utility::settings();
