@@ -14,9 +14,7 @@ class RoleController extends Controller
     public function index()
     {
         if (\Auth::user()->can('manage role')) {
-
             $roles = Role::where('created_by', '=', \Auth::user()->creatorId())->where('created_by', '=', \Auth::user()->creatorId())->get();
-
             return view('role.index')->with('roles', $roles);
         } else {
             return redirect()->back()->with('error', 'Permission denied.');

@@ -35,11 +35,18 @@ class ApiController extends Controller
         $settings = [
             'shot_time' => isset($settings['interval_time']) ? $settings['interval_time'] : 0.5,
         ];
-        return $this->success([
-            'token' => auth()->user()->createToken('API Token')->plainTextToken,
-            'user' => auth()->user(),
-            'settings' => $settings,
-        ], 'Login successfully.');
+
+        return response()->json(['token' => auth()->user()->createToken('API Token')->plainTextToken,
+        'status'=>true,
+        'user' => auth()->user(),
+        'settings' => $settings,
+        'message'=>'Login successfully.'
+    ]);
+        // return $this->success([
+        //     'token' => auth()->user()->createToken('API Token')->plainTextToken,
+        //     'user' => auth()->user(),
+        //     'settings' => $settings,
+        // ], 'Login successfully.');
     }
     public function logout()
     {
